@@ -31,18 +31,17 @@ public class TrainingController {
 
     @PostMapping("/save")
     public void saveTraining(@RequestBody TrainingRequestDTO training) {
-
         trainingService.saveTraining(training);
     }
 
-
-    @PutMapping("/update")
-    public void updateTraining(@RequestBody Training training) {
-        trainingService.updateTraining(training);
+    @PutMapping("/update/{id}")
+    public void updateTraining(@PathVariable Long id,@RequestBody TrainingRequestDTO training) {
+        trainingService.updateTraining(id,training);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteTraining(@PathVariable Long id) {
-        trainingService.deleteTraining(id);
+        trainingService.delete(id);
     }
+
 }

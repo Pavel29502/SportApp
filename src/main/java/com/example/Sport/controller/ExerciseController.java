@@ -1,6 +1,7 @@
 package com.example.Sport.controller;
 
 import com.example.Sport.bean.Exercise;
+import com.example.Sport.dto.ExerciseRequestDTO;
 import com.example.Sport.service.ExerciseService;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,14 +28,14 @@ public class ExerciseController {
     }
 
     @PostMapping("/save")
-    public Exercise saveExercise(@RequestBody Exercise exercise) {
+    public Exercise saveExercise(@RequestBody ExerciseRequestDTO exercise) {
         return exerciseService.saveExercise(exercise);
     }
 
-    @PostMapping("/update")
-    public Exercise updateExercise(@RequestBody Exercise exercise) {
-        return exerciseService.saveExercise(exercise);
-    }
+//    @PutMapping("/update")
+//    public Exercise updateExercise(@RequestBody Exercise exercise) {
+//        return exerciseService.saveExercise(exercise);
+//    }
 
     @DeleteMapping("{id}")
     public void deleteExercise(@PathVariable Long id) {

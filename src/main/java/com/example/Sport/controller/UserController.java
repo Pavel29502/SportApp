@@ -1,14 +1,15 @@
 package com.example.Sport.controller;
 
-
 import com.example.Sport.bean.User;
+import com.example.Sport.dto.UserRequestDTO;
 import com.example.Sport.service.UserService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/customer")
 public class UserController {
 
     private final UserService userService;
@@ -22,18 +23,19 @@ public class UserController {
         return userService.getAllUsers();
     }
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
+        public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id).orElse(null);
     }
 
     @PostMapping("/save")
-    public User saveUser(@RequestBody User user) {
+    public User saveUser(@RequestBody UserRequestDTO user) {
         return userService.save(user);
     }
 
-    @PostMapping("/update")
-    public User updateUser(@RequestBody User user) {
-        return userService.update(user);
+
+    @PutMapping("/update/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody UserRequestDTO user) {
+        return userService.update(id, user);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -42,3 +44,7 @@ public class UserController {
     }
 
 }
+
+
+
+

@@ -1,6 +1,7 @@
 package com.example.Sport.controller;
 
 import com.example.Sport.bean.TypeTraining;
+import com.example.Sport.dto.TypeTrainingRequestDTO;
 import com.example.Sport.service.TypeTrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,35 +12,35 @@ import java.util.List;
 @RequestMapping("/type")
 public class TypeTrainingController {
 
-    private final TypeTrainingService service;
+    private final TypeTrainingService typeTrainingService;
 
     @Autowired
     public TypeTrainingController(TypeTrainingService service) {
-        this.service = service;
+        this.typeTrainingService = service;
     }
 
     @GetMapping
     public List<TypeTraining> getAllTypeTrainings() {
-        return service.getAllTypeTrainings();
+        return typeTrainingService.getAllTypeTrainings();
     }
 
     @GetMapping("/{id}")
     public TypeTraining getTypeTrainingById(@PathVariable Long id) {
-        return service.getTypeTrainingById(id);
+        return typeTrainingService.getTypeTrainingById(id);
     }
 
     @PostMapping("/save")
-    public void saveTypeTraining(@RequestBody TypeTraining typeTraining) {
-        service.save(typeTraining);
+    public void saveTypeTraining(@RequestBody TypeTrainingRequestDTO typeTraining) {
+        typeTrainingService.save(typeTraining);
     }
 
-    @PutMapping("/update")
-    public void updateTypeTraining(@RequestBody TypeTraining typeTraining) {
-        service.update(typeTraining);
+    @PutMapping("/update/{id}")
+    public void updateTypeTraining(@PathVariable Long id, @RequestBody TypeTrainingRequestDTO typeTraining) {
+        typeTrainingService.update(id, typeTraining);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteTypeTraining(@PathVariable Long id) {
-        service.delete(id);
+        typeTrainingService.delete(id);
     }
 }

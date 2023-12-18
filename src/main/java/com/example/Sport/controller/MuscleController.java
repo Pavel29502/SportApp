@@ -2,6 +2,7 @@ package com.example.Sport.controller;
 
 
 import com.example.Sport.bean.Muscle;
+import com.example.Sport.dto.MuscleRequestDTO;
 import com.example.Sport.service.MuscleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +29,12 @@ public class MuscleController {
     }
 
     @PostMapping("/save")
-    public Muscle saveMuscle(@RequestBody Muscle muscle) {
+    public Muscle saveMuscle(@RequestBody MuscleRequestDTO muscle) {
         return muscleService.saveMuscle(muscle);
     }
-    @PutMapping("/update")
-    public Muscle updateMuscle(@RequestBody Muscle muscle) {
-        return muscleService.updateMuscle(muscle);
+    @PutMapping("/update/{id}")
+    public Muscle updateMuscle(@PathVariable Long id,@RequestBody MuscleRequestDTO muscle) {
+        return muscleService.updateMuscle(id, muscle);
     }
 
     @DeleteMapping("/{id}")

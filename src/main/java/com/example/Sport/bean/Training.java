@@ -1,9 +1,20 @@
 package com.example.Sport.bean;
 
+import com.example.Sport.dto.TrainingRequestDTO;
+import com.example.Sport.dto.TypeTrainingRequestDTO;
+import com.example.Sport.repository.TrainingRepository;
+import com.example.Sport.repository.TypeTrainingRepository;
+import com.example.Sport.repository.UserRepository;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,20 +34,22 @@ public class Training {
     @Column(name = "description_training")
     private String description;
 
+
     @Column(name = "time")
-    private int time;
+    private Long time;
 
     @ManyToOne
     @JoinColumn(name = "type_training_id")
+    @JsonIgnore
     private TypeTraining typeTraining;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "customer_id")
+    @JsonIgnore
     private User user;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "body")
-//  private String trainingBody;
     private Body trainingBody;
 
 }
@@ -48,9 +61,5 @@ public class Training {
 
 
 
-//    @JoinColumn(name = "user_id", insertable = false, updatable = false)
 
 
-
-
-//    @JoinColumn(name = "type_training_id", insertable = false, updatable = false)

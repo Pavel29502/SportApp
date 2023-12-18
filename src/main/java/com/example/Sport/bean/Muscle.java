@@ -1,10 +1,18 @@
 package com.example.Sport.bean;
 
+import com.example.Sport.dto.MuscleRequestDTO;
+import com.example.Sport.repository.MuscleRepository;
+import com.example.Sport.repository.UserRepository;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -22,20 +30,24 @@ public class Muscle {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "body")
-    private String body;
+//    @Column(name = "body")
+//    private String body;
 
     @ManyToMany(mappedBy = "muscles")
     private Set<Exercise> exercises;
 
     @Enumerated(EnumType.STRING)
-//    @Column(name = "body")
+    @Column(name = "body")
 //    private String muscleBody;
     private Body muscleBody;
 ////////////
     @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JsonIgnore
+//    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id")
     private User user;
-
-
 }
+
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "body")
+//    private Body trainingBody;

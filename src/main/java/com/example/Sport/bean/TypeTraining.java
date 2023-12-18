@@ -1,10 +1,14 @@
 package com.example.Sport.bean;
 
+import com.example.Sport.dto.TypeTrainingRequestDTO;
+import com.example.Sport.repository.TypeTrainingRepository;
 import com.example.Sport.service.ExerciseService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,3 +31,4 @@ public class TypeTraining {
     private List<Training> trainings;
 
 }
+
