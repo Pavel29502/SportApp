@@ -9,11 +9,12 @@ services:
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
     ports:
-      - "5433:5432"
+      - "5436:5432"
     networks:
       - ntw
 
   app:
+    image: pavel780/app:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,7 +23,7 @@ services:
     depends_on:
       - postgres
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5433/sport
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/sport
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: root
     networks:
