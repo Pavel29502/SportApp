@@ -55,3 +55,5 @@ CREATE TABLE exercise_muscle (
 );
 
 insert into customer (id, name) values (1, 'Ivan');
+insert into customer (id, name) values (2, 'Vitalii');
+insert into customer (id, name) values (3, 'Dmitrii');
