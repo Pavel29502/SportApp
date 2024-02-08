@@ -32,22 +32,18 @@ public class Muscle {
 
 //    @Column(name = "body")
 //    private String body;
-
-    @ManyToMany(mappedBy = "muscles")
-    private Set<Exercise> exercises;
+//    delete
+//    @ManyToMany(mappedBy = "muscles")
+//    private Set<Exercise> exercises;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "body")
 //    private String muscleBody;
     private Body muscleBody;
 ////////////
-    @ManyToOne
-    @JsonIgnore
+//    @ManyToOne
+//    @JsonIgnore
 //    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
-    @JoinColumn(name = "customer_id")
-    private User user;
+//    @JoinColumn(name = "customer_id")
+//    private User user;
 }
-
-//    @Enumerated(EnumType.STRING)
-//    @Column(name = "body")
-//    private Body trainingBody;

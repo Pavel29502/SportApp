@@ -19,7 +19,7 @@ public enum Body {
     public  int id;
     public String body;
 
-    public static Body getById(Long id) {
+    public static Body getById(int id) {
         for(Body e : values()) {
             if(e.id == id) return e;
         }

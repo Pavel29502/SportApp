@@ -27,8 +27,9 @@ public class Exercise {
     @Column(name = "time")
     private Long time;
 
-    @Column(name = "contradictions", length = 1000)
-    private String contradictions;
+    // тут ошибка в названии таблицы
+    @Column(name = "contradications", length = 1000)
+    private String contradications;
 
     @ManyToMany
     @JoinTable(

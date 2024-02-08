@@ -17,11 +17,11 @@ public class MuscleRequestDTO {
 
     private String title;
 
-    private Long userId;
+//    private Long userId;
 
-    private Long exerciseId;
+//    private Long exerciseId;
 
-    private Long body;
+    private int body;
 
 }
 

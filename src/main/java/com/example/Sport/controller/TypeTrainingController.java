@@ -4,6 +4,7 @@ import com.example.Sport.bean.TypeTraining;
 import com.example.Sport.dto.TypeTrainingRequestDTO;
 import com.example.Sport.service.TypeTrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +31,9 @@ public class TypeTrainingController {
     }
 
     @PostMapping("/save")
-    public void saveTypeTraining(@RequestBody TypeTrainingRequestDTO typeTraining) {
-        typeTrainingService.save(typeTraining);
+    public ResponseEntity<TypeTraining> saveTypeTraining(@RequestBody TypeTrainingRequestDTO typeTrainingRequestDTO) {
+        TypeTraining savedTypeTraining = typeTrainingService.save(typeTrainingRequestDTO);
+        return ResponseEntity.ok(savedTypeTraining);
     }
 
     @PutMapping("/update/{id}")

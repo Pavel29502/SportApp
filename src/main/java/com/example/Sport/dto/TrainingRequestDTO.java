@@ -25,34 +25,6 @@ public class TrainingRequestDTO {
 
     private Long typeTrainingId;
 
-    private Long body;
+    private int body;
 }
 
-//@Table(name = "training")
-//public class Training {
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//
-//    @Column(name = "title")
-//    private String title;
-//
-//    @Column(name = "description_training")
-//    private String description;
-//
-//    @Column(name = "time")
-//    private int time;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "type_training_id")
-//    private TypeTraining typeTraining;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id")
-//    private User user;
-//
-//    @Enumerated(EnumType.STRING)
-//    @Column(name = "body")
-////  private String trainingBody;
-//    private Body trainingBody;
