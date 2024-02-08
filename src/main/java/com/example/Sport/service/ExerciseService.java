@@ -31,16 +31,58 @@ public class ExerciseService {
         return exerciseRepository.findById(id);
     }
 
+//    public Exercise saveExercise(ExerciseRequestDTO exerciseRequestDTO) {
+//        Exercise exercise = new Exercise();
+//        Muscle muscle = muscleRepository.findById(exerciseRequestDTO.getMuscleId()).orElse(null);
+//        Set<Muscle> muscleSet = new HashSet<>();
+//        muscleSet.add(muscle);
+//
+//        exercise.setTitle(exerciseRequestDTO.getTitle());
+//        exercise.setTime(exerciseRequestDTO.getTime());
+//        exercise.setTime(exerciseRequestDTO.getTime());
+//        exercise.setMuscles(muscleSet);
+//        return exerciseRepository.save(exercise);
+//    }
+
+//        public Exercise saveExercise(ExerciseRequestDTO exerciseRequestDTO) {
+//        Exercise exercise = new Exercise();
+//        exercise.setTitle(exerciseRequestDTO.getTitle());
+//        exercise.setOrderUse(exerciseRequestDTO.getOrderUse());
+//        exercise.setTime(exerciseRequestDTO.getTime());
+//        exercise.setContradictions(exerciseRequestDTO.getContradiction());
+//
+//        // Получаем мышцу по ее id
+//        Muscle muscle = muscleRepository.findById(exerciseRequestDTO.getMuscleId()).orElse(null);
+//
+//        // Устанавливаем мышцу упражнения, если она существует
+//        if (muscle != null) {
+//            exercise.getMuscles().add(muscle);
+//        }
+
+//        return exerciseRepository.save(exercise);
+//    }
+
     public Exercise saveExercise(ExerciseRequestDTO exerciseRequestDTO) {
         Exercise exercise = new Exercise();
-        Muscle muscle = muscleRepository.findById(exerciseRequestDTO.getMuscleId()).orElse(null);
-        Set<Muscle> muscleSet = new HashSet<>();
-        muscleSet.add(muscle);
-
         exercise.setTitle(exerciseRequestDTO.getTitle());
+        exercise.setOrderUse(exerciseRequestDTO.getOrderUse());
         exercise.setTime(exerciseRequestDTO.getTime());
-        exercise.setTime(exerciseRequestDTO.getTime());
-        exercise.setMuscles(muscleSet);
+        exercise.setContradications(exerciseRequestDTO.getContradiction());
+
+        // Инициализация пустого множества для мышц
+        Set<Muscle> muscles = new HashSet<>();
+
+        // Получаем мышцу по ее id
+        Muscle muscle = muscleRepository.findById(exerciseRequestDTO.getMuscleId()).orElse(null);
+
+        // Устанавливаем мышцу упражнения, если она существует
+        if (muscle != null) {
+            muscles.add(muscle);
+        }
+
+        // Устанавливаем мышцы упражнения
+        exercise.setMuscles(muscles);
+
         return exerciseRepository.save(exercise);
     }
 
@@ -52,3 +94,4 @@ public class ExerciseService {
         exerciseRepository.deleteById(id);
     }
 }
+

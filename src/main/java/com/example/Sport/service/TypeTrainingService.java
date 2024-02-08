@@ -1,7 +1,10 @@
 package com.example.Sport.service;
 
+import com.example.Sport.bean.Body;
+import com.example.Sport.bean.Muscle;
 import com.example.Sport.bean.TypeTraining;
 import com.example.Sport.bean.User;
+import com.example.Sport.dto.MuscleRequestDTO;
 import com.example.Sport.dto.TypeTrainingRequestDTO;
 import com.example.Sport.dto.UserRequestDTO;
 import com.example.Sport.repository.TypeTrainingRepository;
@@ -30,12 +33,23 @@ public class TypeTrainingService {
     }
 
 
-    public TypeTraining save (TypeTrainingRequestDTO typeTrainingRequestDTO) {
+    public TypeTraining save(TypeTrainingRequestDTO typeTrainingRequestDTO) {
         TypeTraining typeTraining = new TypeTraining();
         typeTraining.setTitle(typeTrainingRequestDTO.getTitle());
-
         return typeTrainingRepository.save(typeTraining);
     }
+
+
+//    public Muscle saveMuscle(MuscleRequestDTO muscleRequestDTO) {
+//        muscle.setTitle(muscleRequestDTO.getTitle());
+//        muscle.setMuscleBody(Body.getById(muscleRequestDTO.getBody()));
+//        return muscleRepository.save(muscle);
+
+//    public TypeTraining save(TypeTrainingRequestDTO typeTrainingRequestDTO) {
+//        TypeTraining typeTraining = new TypeTraining();
+//        typeTraining.setTitle(typeTrainingRequestDTO.getTitle());
+//        return typeTrainingRepository.save(typeTraining);
+//    }
 
     public TypeTraining update(Long id, TypeTrainingRequestDTO typeTrainingRequestDTO) {
         TypeTraining existTypeTraining = typeTrainingRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(

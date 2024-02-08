@@ -106,8 +106,13 @@ public class TrainingService {
     }
 
     public Training saveTraining(TrainingRequestDTO trainingDTO) {
-        User user = userRepository.findById(trainingDTO.getUserId()).orElse(null);
-        TypeTraining typeTraining = typeTrainingRepository.findById(trainingDTO.getTypeTrainingId()).orElse(null);
+//        User user = userRepository.findById(trainingDTO.getUserId()).orElse(null);
+//        TypeTraining typeTraining = typeTrainingRepository.findById(trainingDTO.getTypeTrainingId()).orElse(null);
+
+        User user = userRepository.findById(trainingDTO.getUserId())
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + trainingDTO.getUserId()));
+        TypeTraining typeTraining = typeTrainingRepository.findById(trainingDTO.getTypeTrainingId())
+                .orElseThrow(() -> new EntityNotFoundException("TypeTraining not found with id: " + trainingDTO.getTypeTrainingId()));
 
         Training training = new Training();
         training.setUser(user);
@@ -148,6 +153,61 @@ public class TrainingService {
         trainingRepository.deleteById(id);
     }
 }
+
+//    public List<Training> getAllTrainings() {
+//        return trainingRepository.findAll();
+//    }
+//
+//    public Optional<Training> getTrainingById(Long id) {
+//        return trainingRepository.findById(id);
+//    }
+//
+//    public Training saveTraining(TrainingRequestDTO trainingDTO) {
+//        User user = userRepository.findById(trainingDTO.getUserId())
+//                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + trainingDTO.getUserId()));
+//        TypeTraining typeTraining = typeTrainingRepository.findById(trainingDTO.getTypeTrainingId())
+//                .orElseThrow(() -> new EntityNotFoundException("TypeTraining not found with id: " + trainingDTO.getTypeTrainingId()));
+//
+//        Training training = new Training();
+//        training.setUser(user);
+//        training.setTypeTraining(typeTraining);
+//        training.setTitle(trainingDTO.getTitle());
+//        training.setDescription(trainingDTO.getDescription());
+//        training.setTime(trainingDTO.getTime());
+//        training.setTrainingBody(Body.getById(trainingDTO.getBody()));
+//
+//        return trainingRepository.save(training);
+//    }
+//
+//    public Training updateTraining(Long id, TrainingRequestDTO trainingRequestDTO) {
+//        Training existingTraining = trainingRepository.findById(id)
+//                .orElseThrow(() -> new EntityNotFoundException("Training not found with id: " + id));
+//
+//        if (trainingRequestDTO.getUserId() != null) {
+//            User user = userRepository.findById(trainingRequestDTO.getUserId())
+//                    .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + trainingRequestDTO.getUserId()));
+//            existingTraining.setUser(user);
+//        }
+//
+//        if (trainingRequestDTO.getTypeTrainingId() != null) {
+//            TypeTraining typeTraining = typeTrainingRepository.findById(trainingRequestDTO.getTypeTrainingId())
+//                    .orElseThrow(() -> new EntityNotFoundException("TypeTraining not found with id: " + trainingRequestDTO.getTypeTrainingId()));
+//            existingTraining.setTypeTraining(typeTraining);
+//        }
+//
+//        if (trainingRequestDTO.getTitle() != null) {
+//            existingTraining.setTitle(trainingRequestDTO.getTitle());
+//            existingTraining.setDescription(trainingRequestDTO.getDescription());
+//            existingTraining.setTime(trainingRequestDTO.getTime());
+//            existingTraining.setTrainingBody(Body.getById(trainingRequestDTO.getBody()));
+//        }
+//
+//        return trainingRepository.save(existingTraining);
+//    }
+
+//    public void delete(Long id) {
+//        trainingRepository.deleteById(id);
+//    }
 
 
 

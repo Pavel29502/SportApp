@@ -27,7 +27,7 @@ CREATE TABLE exercise (
     title VARCHAR(50) NOT NULL,
     order_use VARCHAR(1000),
     time INT,
-    contradictions VARCHAR(1000)
+    contradications VARCHAR(1000)
 );
 
 CREATE TABLE training_exercise (

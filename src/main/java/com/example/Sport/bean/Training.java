@@ -51,7 +51,6 @@ public class Training {
     @Enumerated(EnumType.STRING)
     @Column(name = "body")
     private Body trainingBody;
-
 }
 
 
