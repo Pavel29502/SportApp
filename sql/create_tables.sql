@@ -24,10 +24,12 @@ CREATE TABLE training (
 
 CREATE TABLE exercise (
     id SERIAL PRIMARY KEY,
+    body VARCHAR(50),
     title VARCHAR(50) NOT NULL,
+    url VARCHAR(1000),
     order_use VARCHAR(1000),
     time INT,
-    contradications VARCHAR(1000)
+    contradictions VARCHAR(1000)
 );
 
 CREATE TABLE training_exercise (
@@ -42,7 +44,6 @@ CREATE TABLE training_exercise (
 
 CREATE TABLE muscle (
     id SERIAL PRIMARY KEY,
-    body VARCHAR(50),
     title VARCHAR(50) NOT NULL
 );
 
@@ -54,6 +55,119 @@ CREATE TABLE exercise_muscle (
     FOREIGN KEY (muscle_id) REFERENCES muscle(id)
 );
 
-insert into customer (id, name) values (1, 'Ivan');
-insert into customer (id, name) values (2, 'Vitalii');
-insert into customer (id, name) values (3, 'Dmitrii');
+insert into customer (name) values ('Ivan');
+insert into customer (name) values ('Vitalii');
+insert into customer (name) values ('Dmitrii');
+
+
+insert into type_training (title) values ('Утренняя зарядка');
+insert into type_training (title) values ('Фитнес дома');
+insert into type_training (title) values ('Разминка на работе');
+insert into type_training (title) values ('Раслабление перед сном');
+
+insert into muscle (title) values ('Мышцы живота');
+insert into muscle (title) values ('Икры');
+insert into muscle (title) values ('Квадритепс');
+insert into muscle (title) values ('Трицепс');
+insert into muscle (title) values ('Бицепс');
+insert into muscle (title) values ('Мышцы шеи');
+
+
+insert into exercise (body, title, url, order_use, time, contradictions) values ('PRESS', 'Скручивания вперёд', 'https://drive.google.com/file/d/1PZobFaSjYoFLQfbdcEvPCKpo2vbfBVuz/view?usp=drive_link',
+                                       'Описание очередности', 40, 'Описание противопоказаний');
+insert into exercise (body, title, url, order_use, time, contradictions) values ('BOTTOM', 'Бег на месте', 'https://drive.google.com/file/d/19xNx0XvSpo3efFvxBG6BQPUbgpchfseE/view?usp=drive_link',
+                                       'Описание очередности', 40, 'Описание противопоказаний');
+insert into exercise (body, title, url, order_use, time, contradictions) values ('UPPER', 'Качаем трицепс', 'https://drive.google.com/file/d/1fHkKfBhgCdalRnfajyfCalMOMzv8OaMJ/view?usp=drive_link', 'описание очередности', 60, 'Описание противопоказаний');
+insert into exercise (body, title, url, order_use, time, contradictions) values ('UPPER', 'Качаем бицепс', 'https://drive.google.com/file/d/11wDMqTb4v_ZuN3KIox3oUVlZ2Scd8LKz/view?usp=drive_link',
+                                                                                     'Описание очередности', 50, 'Описание противопоказаний');
+insert into exercise (body, title, url, order_use, time, contradictions) values ('BOTTOM', 'Растяжка правой икры', 'https://drive.google.com/file/d/14TjxkSEOdsoNZMm22Z8QqL5nlVl2bIqW/view?usp=drive_link',
+                                                                                     'Описание очередности', 50, 'Описание противопоказаний');
+insert into exercise (body, title, url, order_use, time, contradictions) values ('UPPER', 'Разминка шеи', 'https://drive.google.com/file/d/1CmM46rmAaFjtP1hCTUPjTewRdri6I6sZ/view?usp=drive_link',
+                                                                                     'Описание очередности', 40, 'Описание противопоказаний');
+insert into exercise (body, title, url, order_use, time, contradictions) values ('BOTTOM', 'Разминка колен', 'https://drive.google.com/file/d/1ASW_JakoVR0cnMA5x_pHxSdZa-2KsZlm/view?usp=drive_link',
+                                                                                     'Описание очередности', 40, 'Описание противопоказаний');
+insert into exercise (body, title, url, order_use, time, contradictions) values ('PRESS', 'Вело-скручивания', 'https://drive.google.com/file/d/1k8Oa_yQYWdxuoAN6zxp7SOZOW3MF2Fjy/view?usp=drive_link',
+                                                                                     'Описание очередности', 50, 'Описание противопоказаний');
+
+
+
+insert into exercise_muscle (exercise_id, muscle_id) values (1, 4);
+insert into exercise_muscle (exercise_id, muscle_id) values (2, 2);
+
+insert into exercise_muscle (exercise_id, muscle_id) values (2, 3);
+
+insert into exercise_muscle (exercise_id, muscle_id) values (3, 4);
+insert into exercise_muscle (exercise_id, muscle_id) values (4, 5);
+insert into exercise_muscle (exercise_id, muscle_id) values (5, 1);
+insert into exercise_muscle (exercise_id, muscle_id) values (6, 6);
+
+insert into exercise_muscle (exercise_id, muscle_id) values (7, 3);
+insert into exercise_muscle (exercise_id, muscle_id) values (7, 2);
+
+insert into exercise_muscle (exercise_id, muscle_id) values (8, 1);
+
+
+insert into training (id, title, description_training, customer_id, time, type_training_id, body)
+ values (1, 'Мощный пресс', 'Описание тренировки', 1, 60, 2, 'PRESS');
+insert into training (id, title, description_training, customer_id, time, type_training_id, body)
+values (2, 'Экспресс-фитнес', 'Описание тренировки', 3, 30, 2, 'PRESS');
+insert into training (id, title, description_training, customer_id, time, type_training_id, body)
+values (3, 'Ноги-молоты', 'Описание тренировки', 2, 50, 1, 'BOTTOM');
+insert into training (id, title, description_training, customer_id, time, type_training_id, body)
+values (4, 'Взбодрись', 'Описание тренировки', 1, 40, 1, 'ALLBODY');
+
+
+insert into training_exercise (training_id, exercise_id, approach, priority) values (1, 1, 4, 1);
+
+insert into training_exercise (training_id, exercise_id, approach, priority) values (2, 2, 3, 1);
+
+insert into training_exercise (training_id, exercise_id, approach, priority) values (3, 3, 5, 1);
+insert into training_exercise (training_id, exercise_id, approach, priority) values (3, 4, 4, 2);
+
+insert into training_exercise (training_id, exercise_id, approach, priority) values (4, 6, 3, 2);
+insert into training_exercise (training_id, exercise_id, approach, priority) values (4, 7, 3, 1);
+insert into training_exercise (training_id, exercise_id, approach, priority) values (4, 8, 2, 3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -29,21 +29,7 @@ public class Muscle {
 
     @Column(name = "title")
     private String title;
-
-//    @Column(name = "body")
-//    private String body;
-//    delete
-//    @ManyToMany(mappedBy = "muscles")
-//    private Set<Exercise> exercises;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "body")
-//    private String muscleBody;
-    private Body muscleBody;
-////////////
-//    @ManyToOne
-//    @JsonIgnore
-//    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
-//    @JoinColumn(name = "customer_id")
-//    private User user;
 }
+
+
+

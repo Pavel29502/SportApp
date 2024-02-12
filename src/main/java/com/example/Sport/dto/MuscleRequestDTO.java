@@ -17,11 +17,5 @@ public class MuscleRequestDTO {
 
     private String title;
 
-//    private Long userId;
-
-//    private Long exerciseId;
-
-    private int body;
-
 }
 

@@ -33,7 +33,6 @@ public class ExerciseController {
 //    public Exercise saveExercise(@RequestBody ExerciseRequestDTO exercise) {
 //        return exerciseService.saveExercise(exercise);
 //    }
-
     @PostMapping("/save")
     public ResponseEntity<Exercise> saveExercise(@RequestBody ExerciseRequestDTO exerciseRequestDTO) {
         Exercise savedExercise = exerciseService.saveExercise(exerciseRequestDTO);
