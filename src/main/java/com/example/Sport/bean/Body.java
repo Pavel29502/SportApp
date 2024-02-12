@@ -1,10 +1,7 @@
 package com.example.Sport.bean;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
@@ -17,6 +14,7 @@ public enum Body {
     DEFAULT(5, "DEFAULT");
 
     public  int id;
+
     public String body;
 
     public static Body getById(int id) {

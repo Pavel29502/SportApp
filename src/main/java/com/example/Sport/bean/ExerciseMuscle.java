@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
 
 
 @NoArgsConstructor
@@ -26,5 +25,4 @@ public class ExerciseMuscle {
     @ManyToOne
     @JoinColumn(name = "muscle_id")
     private Muscle muscleId;
-
 }

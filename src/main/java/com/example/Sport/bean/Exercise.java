@@ -21,15 +21,21 @@ public class Exercise {
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "body")
+    private Body exerciseBody;
+
+    @Column(name = "url")
+    private String url;
+
     @Column(name = "order_use", length = 1000)
     private String orderUse;
 
     @Column(name = "time")
     private Long time;
 
-    // тут ошибка в названии таблицы
-    @Column(name = "contradications", length = 1000)
-    private String contradications;
+    @Column(name = "contradictions", length = 1000)
+    private String contradictions;
 
     @ManyToMany
     @JoinTable(

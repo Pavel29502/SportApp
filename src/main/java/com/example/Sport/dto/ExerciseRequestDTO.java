@@ -1,5 +1,6 @@
 package com.example.Sport.dto;
 
+import com.example.Sport.bean.Body;
 import com.example.Sport.bean.Muscle;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,12 +20,16 @@ public class ExerciseRequestDTO {
 
     private String title;
 
+    private Body body;
+
+    private String url;
+
     private String orderUse;
 
     private Long time;
 
     private Long muscleId;
 
-    private String contradiction;
+    private String contradictions;
 
 }

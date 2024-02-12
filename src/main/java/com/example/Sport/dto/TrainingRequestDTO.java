@@ -25,6 +25,6 @@ public class TrainingRequestDTO {
 
     private Long typeTrainingId;
 
-    private int body;
+    private Body body;
 }
 
