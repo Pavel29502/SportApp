@@ -26,11 +26,13 @@ CREATE TABLE exercise (
     id SERIAL PRIMARY KEY,
     body VARCHAR(50),
     title VARCHAR(50) NOT NULL,
+    description_exercise VARCHAR(1000),
     url VARCHAR(1000),
     order_use VARCHAR(1000),
     time INT,
     contradictions VARCHAR(1000)
 );
+
 
 CREATE TABLE training_exercise (
     id SERIAL PRIMARY KEY,
@@ -67,27 +69,52 @@ insert into type_training (title) values ('Раслабление перед с�
 
 insert into muscle (title) values ('Мышцы живота');
 insert into muscle (title) values ('Икры');
-insert into muscle (title) values ('Квадритепс');
+insert into muscle (title) values ('Квадрицепс');
 insert into muscle (title) values ('Трицепс');
 insert into muscle (title) values ('Бицепс');
 insert into muscle (title) values ('Мышцы шеи');
 
 
-insert into exercise (body, title, url, order_use, time, contradictions) values ('PRESS', 'Скручивания вперёд', 'https://drive.google.com/file/d/1PZobFaSjYoFLQfbdcEvPCKpo2vbfBVuz/view?usp=drive_link',
+insert into exercise (body, title, description_exercise, url, order_use, time, contradictions) values ('PRESS', 'Скручивания вперёд', 'Описание','https://drive.google.com/file/d/1PZobFaSjYoFLQfbdcEvPCKpo2vbfBVuz/view?usp=drive_link',
                                        'Описание очередности', 40, 'Описание противопоказаний');
-insert into exercise (body, title, url, order_use, time, contradictions) values ('BOTTOM', 'Бег на месте', 'https://drive.google.com/file/d/19xNx0XvSpo3efFvxBG6BQPUbgpchfseE/view?usp=drive_link',
+insert into exercise (body, title, description_exercise, url, order_use, time, contradictions) values ('BOTTOM', 'Бег на месте', 'Описание', 'https://drive.google.com/file/d/19xNx0XvSpo3efFvxBG6BQPUbgpchfseE/view?usp=drive_link',
                                        'Описание очередности', 40, 'Описание противопоказаний');
-insert into exercise (body, title, url, order_use, time, contradictions) values ('UPPER', 'Качаем трицепс', 'https://drive.google.com/file/d/1fHkKfBhgCdalRnfajyfCalMOMzv8OaMJ/view?usp=drive_link', 'описание очередности', 60, 'Описание противопоказаний');
-insert into exercise (body, title, url, order_use, time, contradictions) values ('UPPER', 'Качаем бицепс', 'https://drive.google.com/file/d/11wDMqTb4v_ZuN3KIox3oUVlZ2Scd8LKz/view?usp=drive_link',
+insert into exercise (body, title, description_exercise, url, order_use, time, contradictions) values ('UPPER', 'Качаем трицепс', 'Описание', 'https://drive.google.com/file/d/1fHkKfBhgCdalRnfajyfCalMOMzv8OaMJ/view?usp=drive_link', 'описание очередности', 60, 'Описание противопоказаний');
+insert into exercise (body, title, description_exercise, url, order_use, time, contradictions) values ('UPPER', 'Качаем бицепс', 'Описание', 'https://drive.google.com/file/d/11wDMqTb4v_ZuN3KIox3oUVlZ2Scd8LKz/view?usp=drive_link',
                                                                                      'Описание очередности', 50, 'Описание противопоказаний');
-insert into exercise (body, title, url, order_use, time, contradictions) values ('BOTTOM', 'Растяжка правой икры', 'https://drive.google.com/file/d/14TjxkSEOdsoNZMm22Z8QqL5nlVl2bIqW/view?usp=drive_link',
+insert into exercise (body, title, description_exercise, url, order_use, time, contradictions) values ('BOTTOM', 'Растяжка правой икры', 'Описание', 'https://drive.google.com/file/d/14TjxkSEOdsoNZMm22Z8QqL5nlVl2bIqW/view?usp=drive_link',
                                                                                      'Описание очередности', 50, 'Описание противопоказаний');
-insert into exercise (body, title, url, order_use, time, contradictions) values ('UPPER', 'Разминка шеи', 'https://drive.google.com/file/d/1CmM46rmAaFjtP1hCTUPjTewRdri6I6sZ/view?usp=drive_link',
+insert into exercise (body, title, description_exercise, url, order_use, time, contradictions) values ('UPPER', 'Разминка шеи', 'Описание', 'https://drive.google.com/file/d/1CmM46rmAaFjtP1hCTUPjTewRdri6I6sZ/view?usp=drive_link',
                                                                                      'Описание очередности', 40, 'Описание противопоказаний');
-insert into exercise (body, title, url, order_use, time, contradictions) values ('BOTTOM', 'Разминка колен', 'https://drive.google.com/file/d/1ASW_JakoVR0cnMA5x_pHxSdZa-2KsZlm/view?usp=drive_link',
+insert into exercise (body, title, description_exercise, url, order_use, time, contradictions) values ('BOTTOM', 'Разминка колен', 'Описание', 'https://drive.google.com/file/d/1ASW_JakoVR0cnMA5x_pHxSdZa-2KsZlm/view?usp=drive_link',
                                                                                      'Описание очередности', 40, 'Описание противопоказаний');
-insert into exercise (body, title, url, order_use, time, contradictions) values ('PRESS', 'Вело-скручивания', 'https://drive.google.com/file/d/1k8Oa_yQYWdxuoAN6zxp7SOZOW3MF2Fjy/view?usp=drive_link',
+insert into exercise (body, title, description_exercise, url, order_use, time, contradictions) values ('PRESS', 'Вело-скручивания', 'Описание', 'https://drive.google.com/file/d/1k8Oa_yQYWdxuoAN6zxp7SOZOW3MF2Fjy/view?usp=drive_link',
                                                                                      'Описание очередности', 50, 'Описание противопоказаний');
+
+
+
+
+
+
+insert into exercise (body, title, description_exercise, url, order_use, time, contradictions) values ('BOTTOM', 'Кокон', 'Описание', 'https://drive.google.com/file/d/1zZG8rvU9XnN_F9i8PNpuVYTOqTRL3v--/view?usp=drive_link',
+                                                                                 'Описание очередности', 50, 'Описание противопоказаний');
+insert into exercise (body, title, description_exercise,url, order_use, time, contradictions) values ('ALLBODY', 'Морская звезда', 'Описание', 'https://drive.google.com/file/d/1DoZZwB61s8cXTRNh6gFe8Un5LaNqu_8P/view?usp=drive_link',
+                                                                                 'Описание очередности', 50, 'Описание противопоказаний');
+insert into exercise (body, title, description_exercise,url, order_use, time, contradictions) values ('PRESS', 'Скалолаз', 'Описание', 'https://drive.google.com/file/d/1-z9UIyJB_o63fg5M7Jwcgau818BoXj31/view?usp=drive_link',
+                                                                                 'Описание очередности', 60, 'Описание противопоказаний');
+insert into exercise (body, title, description_exercise,url, order_use, time, contradictions) values ('ALLBODY', 'Бёрпи', 'Описание', 'https://drive.google.com/file/d/1NMMgiQ4bb8RpqF7k32kvikv6rTtTihbU/view?usp=drive_link',
+                                                                                 'Описание очередности', 50, 'Описание противопоказаний');
+insert into exercise (body, title, description_exercise,url, order_use, time, contradictions) values ('ALLBODY', 'Медведь', 'Описание', 'https://drive.google.com/file/d/1IglVKCGE4x7A-b99gq9thDhQqnkL3k7B/view?usp=drive_link',
+                                                                                 'Описание очередности', 40, 'Описание противопоказаний');
+insert into exercise (body, title, description_exercise,url, order_use, time, contradictions) values ('BOTTOM', 'Краб', 'Описание', 'https://drive.google.com/file/d/113BhX01FWebSSffdqk8JBNJpVXPGDJ9s/view?usp=drive_link',
+                                                                                 'Описание очередности', 40, 'Описание противопоказаний');
+insert into exercise (body, title, description_exercise,url, order_use, time, contradictions) values ('UPPER', 'Отжимания с колен', 'Описание', 'https://drive.google.com/file/d/1OxFo63li5FNuqEZYVGPetoiWCmTdfzCv/view?usp=drive_link',
+                                                                                 'Описание очередности', 60, 'Описание противопоказаний');
+insert into exercise (body, title, description_exercise,url, order_use, time, contradictions) values ('UPPER', 'Динамическая планка', 'Описание', 'https://drive.google.com/file/d/1Zi_kiIPHGYDL3AN_azdpBWJi2B3q5D2_/view?usp=drive_link',
+                                                                                 'Описание очередности', 60, 'Описание противопоказаний');
+
+
+
 
 
 
