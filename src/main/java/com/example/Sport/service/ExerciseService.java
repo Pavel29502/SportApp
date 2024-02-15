@@ -36,6 +36,7 @@ public class ExerciseService {
     public Exercise saveExercise(ExerciseRequestDTO exerciseRequestDTO) {
         Exercise exercise = new Exercise();
         exercise.setTitle(exerciseRequestDTO.getTitle());
+        exercise.setDescription(exerciseRequestDTO.getDescription());
         exercise.setOrderUse(exerciseRequestDTO.getOrderUse());
         exercise.setTime(exerciseRequestDTO.getTime());
         exercise.setContradictions(exerciseRequestDTO.getContradictions() != null ? exerciseRequestDTO.getContradictions() : "");

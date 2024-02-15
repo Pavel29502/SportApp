@@ -1,5 +1,5 @@
 package com.example.Sport.service;
-
+import com.example.Sport.bean.Body;
 import com.example.Sport.bean.Training;
 import com.example.Sport.bean.TypeTraining;
 import com.example.Sport.bean.User;
@@ -7,11 +7,15 @@ import com.example.Sport.dto.TrainingRequestDTO;
 import com.example.Sport.repository.TrainingRepository;
 import com.example.Sport.repository.TypeTrainingRepository;
 import com.example.Sport.repository.UserRepository;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class TrainingService {
@@ -19,6 +23,8 @@ public class TrainingService {
     private final TrainingRepository trainingRepository;
     private final UserRepository userRepository;
     private final TypeTrainingRepository typeTrainingRepository;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
     public TrainingService(TrainingRepository trainingRepository, UserRepository userRepository, TypeTrainingRepository typeTrainingRepository) {
@@ -29,6 +35,20 @@ public class TrainingService {
 
     public List<Training> getAllTrainings() {
         return trainingRepository.findAll();
+    }
+
+    public List<Training> getFilteredTrainings(Long typeTrainingId, String body) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Training.class);
+        Root<Training> root = criteriaQuery.from(Training.class);
+        criteriaQuery.select(root);
+
+        Join<Training, TypeTraining> typeTrainingJoin = root.join("typeTraining");
+
+        Predicate typeTrainingPredicate = criteriaBuilder.equal(typeTrainingJoin.get("id"), typeTrainingId);
+        Predicate bodyPredicate = criteriaBuilder.equal(root.get("trainingBody"), Body.valueOf(body));
+        criteriaQuery.where(typeTrainingPredicate, bodyPredicate);
+        return  entityManager.createQuery(criteriaQuery).getResultList();
     }
 
     public Optional<Training> getTrainingById(Long id) {
@@ -48,7 +68,6 @@ public class TrainingService {
         training.setTitle(trainingDTO.getTitle());
         training.setDescription(trainingDTO.getDescription());
         training.setTime(trainingDTO.getTime());
-//        training.setTrainingBody(Body.getById(trainingDTO.getBody()));
         training.setTrainingBody(trainingDTO.getBody());
 
         return trainingRepository.save(training);
@@ -81,6 +100,7 @@ public class TrainingService {
         trainingRepository.deleteById(id);
     }
 }
+
 
 
 

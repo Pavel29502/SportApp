@@ -14,15 +14,12 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-
     public UserService(UserRepository repository) {
         this.userRepository = repository;
     }
-
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
     public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
     }
@@ -34,7 +31,6 @@ public class UserService {
     }
 
     public User update(Long id, UserRequestDTO userRequestDTO) {
-
         User existUser = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(
                 "User not found with id: " + id));
         if (userRequestDTO.getName() != null) {

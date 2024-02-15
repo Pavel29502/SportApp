@@ -25,6 +25,9 @@ public class Exercise {
     @Column(name = "body")
     private Body exerciseBody;
 
+    @Column(name = "description_exercise")
+    private String description;
+
     @Column(name = "url")
     private String url;
 

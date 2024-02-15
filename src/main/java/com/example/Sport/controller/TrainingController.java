@@ -18,8 +18,12 @@ public class TrainingController {
     public TrainingController(TrainingService trainingService) {
         this.trainingService = trainingService;
     }
+    @GetMapping("/filter")
+        public List<Training> getFilteredTrainings(@RequestParam Long typeTrainingId, @RequestParam String body) {
+            return trainingService.getFilteredTrainings(typeTrainingId, body);
+        }
 
-    @GetMapping
+        @GetMapping
     public List<Training> getAllTrainings() {
         return trainingService.getAllTrainings();
     }
