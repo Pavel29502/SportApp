@@ -383,7 +383,7 @@ INSERT INTO exercise (body, title, description_exercise, url, order_use, time, c
  'Описание очередности', 40, 'Описание противопоказаний');
 
 INSERT INTO exercise (body, title, description_exercise, url, order_use, time, contradictions) VALUES
-('Upper', 'Растяжка рук', 'Встаньте, ноги на ширине плеч, руки вытянуты перед собой.&
+('UPPER', 'Растяжка рук', 'Встаньте, ноги на ширине плеч, руки вытянуты перед собой.&
 Вытяните правую руку в сторону параллельно земле ладонью вниз.&
 Левой рукой возьмите правую руку и осторожно потяните ее к себе, чувствуя растяжение в правом предплечье.&
 Удерживайте растяжку 15–30 секунд, затем расслабьтесь.&
@@ -411,7 +411,7 @@ insert into training (id, title, description_training, customer_id, time, type_t
 values (1, 'Мощный пресс - fitness', 'Описание тренировки', 1, 60, 2, 'PRESS');
 
 insert into training (id, title, description_training, customer_id, time, type_training_id, body)
-values (2, 'Пресс и тело', 'Описание тренировки', 1, 50, 1, 'ALlBODY');
+values (2, 'Пресс и тело', 'Описание тренировки', 1, 50, 1, 'ALLBODY');
 
 insert into training (id, title, description_training, customer_id, time, type_training_id, body)
 values (3, 'Экспресс-фитнес', 'Описание тренировки', 3, 30, 3, 'ALLBODY');
