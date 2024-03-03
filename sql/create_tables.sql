@@ -511,6 +511,26 @@ insert into training_exercise (training_id, exercise_id, approach, priority) val
 insert into training_exercise (training_id, exercise_id, approach, priority) values (10, 7, 3, 6);
 
 
+CREATE TABLE files (
+                       id VARCHAR(36) NOT NULL,
+                       name VARCHAR(255),
+                       type VARCHAR(255),
+                       data BYTEA,
+                       PRIMARY KEY (id)
+);
+
+CREATE TABLE exercise (
+                          id SERIAL PRIMARY KEY,
+                          body VARCHAR(50),
+                          title VARCHAR(50) NOT NULL,
+                          description_exercise VARCHAR(1000),
+                          url VARCHAR(1000),
+                          order_use VARCHAR(1000),
+                          time INT,
+                          contradictions VARCHAR(1000)
+);
+
+
 
 
 

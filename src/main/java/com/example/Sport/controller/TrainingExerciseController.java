@@ -48,6 +48,7 @@ public class TrainingExerciseController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    //
 }
 //
 //    @PutMapping("/update/{id}")

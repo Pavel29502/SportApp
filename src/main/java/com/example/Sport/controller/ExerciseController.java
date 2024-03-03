@@ -29,23 +29,20 @@ public class ExerciseController {
         return exerciseService.getExerciseById(id).orElse(null);
     }
 
-//    @PostMapping("/save")
-//    public Exercise saveExercise(@RequestBody ExerciseRequestDTO exercise) {
-//        return exerciseService.saveExercise(exercise);
-//    }
+
     @PostMapping("/save")
     public ResponseEntity<Exercise> saveExercise(@RequestBody ExerciseRequestDTO exerciseRequestDTO) {
         Exercise savedExercise = exerciseService.saveExercise(exerciseRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedExercise);
+    }
+    }
+
 
 //    @PutMapping("/update")
 //    public Exercise updateExercise(@RequestBody Exercise exercise) {
 //        return exerciseService.saveExercise(exercise);
 //    }
 
-/*    @DeleteMapping("{id}")
-    public void deleteExercise(@PathVariable Long id) {
-        exerciseService.deleteExerciseById(id);
-    }*/
-    }
-}
+////*    @DeleteMapping("{id}")
+//    public void deleteExercise(@PathVariable Long id) {
+//        exerciseService.deleteExerciseById(id);
