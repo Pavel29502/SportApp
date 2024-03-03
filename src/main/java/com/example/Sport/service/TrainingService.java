@@ -31,6 +31,7 @@ public class TrainingService {
         this.trainingRepository = trainingRepository;
         this.userRepository = userRepository;
         this.typeTrainingRepository = typeTrainingRepository;
+
     }
 
     public List<Training> getAllTrainings() {
@@ -50,7 +51,24 @@ public class TrainingService {
         criteriaQuery.where(typeTrainingPredicate, bodyPredicate);
         return  entityManager.createQuery(criteriaQuery).getResultList();
     }
+//
 
+    public List<Training> getFilteredTrainingsOnlyType(Long typeTrainingId) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Training.class);
+        Root<Training> root = criteriaQuery.from(Training.class);
+        criteriaQuery.select(root);
+
+        Join<Training, TypeTraining> typeTrainingJoin = root.join("typeTraining");
+
+        Predicate typeTrainingPredicate = criteriaBuilder.equal(typeTrainingJoin.get("id"), typeTrainingId);
+        criteriaQuery.where(typeTrainingPredicate);
+        return  entityManager.createQuery(criteriaQuery).getResultList();
+    }
+
+
+
+//
     public Optional<Training> getTrainingById(Long id) {
         return trainingRepository.findById(id);
     }

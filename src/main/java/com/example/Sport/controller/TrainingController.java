@@ -22,6 +22,10 @@ public class TrainingController {
         public List<Training> getFilteredTrainings(@RequestParam Long typeTrainingId, @RequestParam String body) {
             return trainingService.getFilteredTrainings(typeTrainingId, body);
         }
+    @GetMapping("/filter/only/type")
+    public List<Training> getFilteredTrainingsOnlyType(@RequestParam Long typeTrainingId) {
+        return trainingService.getFilteredTrainingsOnlyType(typeTrainingId);
+    }
 
         @GetMapping
     public List<Training> getAllTrainings() {

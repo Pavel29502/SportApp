@@ -1,6 +1,7 @@
 package com.example.Sport.controller;
 
 
+import com.example.Sport.bean.Exercise;
 import com.example.Sport.bean.TrainingExercise;
 import com.example.Sport.dto.TrainingExerciseRequestDTO;
 import com.example.Sport.service.TrainingExerciseService;
@@ -20,6 +21,11 @@ public class TrainingExerciseController {
         this.trainingExerciseService = trainingExerciseService;
     }
 
+    @GetMapping("/training/{trainingId}/exercises")
+    public List<Exercise> getExercisesForTraining(@PathVariable Long trainingId) {
+        return trainingExerciseService.getExercisesForTraining(trainingId);
+    }
+////////////////
     @PostMapping("/save")
     public ResponseEntity<String> saveTrainingExercise(@RequestBody TrainingExerciseRequestDTO trainingExerciseRequestDTO) {
         trainingExerciseService.saveTrainingExercise(trainingExerciseRequestDTO);
@@ -42,6 +48,7 @@ public class TrainingExerciseController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    //
 }
 //
 //    @PutMapping("/update/{id}")

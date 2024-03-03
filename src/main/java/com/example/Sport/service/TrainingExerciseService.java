@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TrainingExerciseService {
@@ -57,6 +58,18 @@ public class TrainingExerciseService {
             this.trainingRepository = trainingRepository;
             this.exerciseRepository = exerciseRepository;
         }
+
+
+
+//    public List<Exercise> getExercisesForTraining(Long trainingId) {
+//        return trainingExerciseRepository.findExercisesByTrainingId(trainingId);
+//    }
+
+    public List<Exercise> getExercisesForTraining(Long trainingId) {
+        List<TrainingExercise> trainingExercises = trainingExerciseRepository.findByTrainingId(trainingId);
+        List<Exercise> exercises = trainingExercises.stream().map(TrainingExercise::getExercise).collect(Collectors.toList());
+        return exercises;
+    }
 
         public List<TrainingExercise> getAllTrainingExercises() {
             return trainingExerciseRepository.findAll();
