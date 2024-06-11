@@ -24,6 +24,7 @@ public class ExerciseRequestDTO {
 
     private String description;
 
+//    private String getId;
     private String url;
 
     private String orderUse;

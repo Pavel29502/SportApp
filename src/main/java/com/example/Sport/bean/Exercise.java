@@ -31,6 +31,9 @@ public class Exercise {
     @Column(name = "url")
     private String url;
 
+//    @Column(name = "gif_id")
+//    private String gifId;
+
     @Column(name = "order_use", length = 1000)
     private String orderUse;
 
